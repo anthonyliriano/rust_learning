@@ -1,5 +1,5 @@
 fn main() {
-    arrays();
+    functions(12);
 }
 
 fn variables(){
@@ -27,4 +27,13 @@ fn arrays() {
     let same_numbers = [3;5];
     let should_be_three = same_numbers[4];
     println!("An array with the same number: {should_be_three}");
+}
+
+fn functions(x: i32){
+    println!("The value of x is: {x}");
+    let add_10 = {
+        x + 10
+    };
+     
+    println!("After adding 10, the value is: {add_10}");
 }
