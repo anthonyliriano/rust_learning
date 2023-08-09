@@ -1,5 +1,5 @@
 fn main() {
-    tupleTypes();
+    arrays();
 }
 
 fn variables(){
@@ -16,4 +16,15 @@ fn tupleTypes(){
     let one = tup.2;
     println!("The value of y is :{y}");
     println!("The value of z is : {one}")
+}
+
+fn arrays() {
+    let months = ["January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"];
+    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    let first_month = months[0];
+    println!("The first month is {first_month}");
+    let same_numbers = [3;5];
+    let should_be_three = same_numbers[4];
+    println!("An array with the same number: {should_be_three}");
 }
