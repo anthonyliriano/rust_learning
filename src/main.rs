@@ -1,5 +1,5 @@
 fn main() {
-    functions(12);
+    loops()
 }
 
 fn variables(){
@@ -34,6 +34,42 @@ fn functions(x: i32){
     let add_10 = {
         x + 10
     };
-     
+    let returnValueFromFunction = functionWithReturn(); 
     println!("After adding 10, the value is: {add_10}");
+    println!("The function returns: {returnValueFromFunction}")
+}
+
+fn functionWithReturn() -> i32 {
+    12
+}
+
+fn loops(){
+    let mut x :i32 = 0;
+    let result = loop {
+     println!("The value of x: {x}");
+
+        if x == 5 {            
+            break;
+        }
+        x += 1     
+    };
+
+    let mut count = 0;
+    'counting_up : loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
 }
