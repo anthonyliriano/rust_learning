@@ -1,5 +1,5 @@
 fn main() {
-    loops()
+    ownership();
 }
 
 fn variables(){
@@ -82,4 +82,32 @@ fn loops(){
     for number in (1..4).rev() {
         println!("{number}")
     }
+}
+
+
+fn ownership(){
+    let favorite_string = String::from("Erm");
+    println!("My favorite string: {favorite_string}");
+    // take_ownership(favorite_string);
+    // println!("My favorite string: {favorite_string}, after executing take_ownership function"); //won't work because favorite_string has been disposed
+    let favorite_string = take_ownership_and_giveback(favorite_string);
+    println!("My favorite string: {favorite_string}, after executing take_ownership_and_giveback function");
+    let mut s = String::from("hello"); // This kind of string can be mutated.
+    s.push_str(", world!"); //push_str() appends a literal to a string.
+
+    let mut test = "test";
+   // test.push_str(".. no working ");
+    
+    println!("{s}"); // this will print `hello world`
+}
+
+fn take_ownership(x: String){
+    let s = x;
+    println!("X variable is: {s}")
+}
+
+fn take_ownership_and_giveback(x : String) -> String{
+    let s = x;
+    s
+
 }
