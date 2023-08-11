@@ -1,5 +1,5 @@
 fn main() {
-    ownership();
+    first_word_return_string_slice(&String::from("this is a test"));
 }
 
 fn variables(){
@@ -124,4 +124,23 @@ fn pass_by_reference_allowMuteable(s: &mut String){
     }
 
     println!("The new value is: {s}");
+}
+
+//Returns a string_slice
+fn first_word_return_string_slice(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for(i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+fn string_slices() {
+    let s = String::from("Hello World");
+
+    let hello = &s[0..5];
+    let word = &s[6..11];
 }
