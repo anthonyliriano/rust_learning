@@ -87,6 +87,7 @@ fn loops(){
 
 fn ownership(){
     let favorite_string = String::from("Erm");
+    let another_string = String::from("Another one");
     println!("My favorite string: {favorite_string}");
     // take_ownership(favorite_string);
     // println!("My favorite string: {favorite_string}, after executing take_ownership function"); //won't work because favorite_string has been disposed
@@ -95,10 +96,10 @@ fn ownership(){
     let mut s = String::from("hello"); // This kind of string can be mutated.
     s.push_str(", world!"); //push_str() appends a literal to a string.
 
-    let mut test = "test";
-   // test.push_str(".. no working ");
-    
-    println!("{s}"); // this will print `hello world`
+    pass_by_reference(&s);
+    println!("After the Pass By Reference, variable is: {another_string}");
+    pass_by_reference_allowMuteable(&mut s);
+    println!("After the Pass By Reference & Allow Muteable, variable is: {s}");
 }
 
 fn take_ownership(x: String){
@@ -106,8 +107,21 @@ fn take_ownership(x: String){
     println!("X variable is: {s}")
 }
 
-fn take_ownership_and_giveback(x : String) -> String{
+fn take_ownership_and_giveback(x : String) -> String {
     let s = x;
     s
+}
 
+//Rather then transfering ownership, this allows initial variable to maintain ownership.
+fn pass_by_reference(s : &String) -> usize {
+    s.len()
+}
+
+fn pass_by_reference_allowMuteable(s: &mut String){
+    println!("The old value is: {s}");
+    for newChar in "-modified".chars() {
+        s.push(newChar);
+    }
+
+    println!("The new value is: {s}");
 }
