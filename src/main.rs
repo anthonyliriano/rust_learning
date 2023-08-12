@@ -1,5 +1,6 @@
 fn main() {
-    first_word_return_string_slice(&String::from("this is a test"));
+    struct_example();
+    // first_word_return_string_slice(&String::from("this is a test"));
 }
 
 fn variables(){
@@ -84,7 +85,6 @@ fn loops(){
     }
 }
 
-
 fn ownership(){
     let favorite_string = String::from("Erm");
     let another_string = String::from("Another one");
@@ -143,4 +143,38 @@ fn string_slices() {
 
     let hello = &s[0..5];
     let word = &s[6..11];
+}
+
+fn struct_example() {
+    struct User {
+        active : bool,
+        username: String,
+        email: String
+    }
+    
+    let mut user1 = User {
+        active: false,
+        username: String::from("bob123"),
+        email: String::from("a@gmail.com")
+    };
+
+    user1.email = String::from("aa@yahoo.com");
+    println!("User1 email address: {}", user1.email);
+
+    let user2 = User {
+        active: user1.active,
+        username: user1.username,
+        email: String::from("another@example.com")
+    };
+
+    //copies all props from user 2 w/ exception of email
+    let user3 = User {
+        email : String::from("another_example@cool.com"),
+        ..user2
+    };
+
+    struct Color(i32, i32, i32);
+    let black = Color(0, 0, 0);
+    println!("Black is: {}", black.2);
+
 }
