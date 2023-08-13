@@ -1,5 +1,5 @@
 fn main() {
-    struct_example();
+    struct_derrived_traits();
     // first_word_return_string_slice(&String::from("this is a test"));
 }
 
@@ -177,4 +177,20 @@ fn struct_example() {
     let black = Color(0, 0, 0);
     println!("Black is: {}", black.2);
 
+}
+
+fn struct_derrived_traits() {    
+    #[derive(Debug)]
+    struct Rectangle {
+        width: u32,
+        height: u32
+    }
+    let scale = 2;
+    let rect1 = Rectangle {
+        width: dbg!(30 * scale),
+        height: 50
+    };
+
+    println!("rect1 is {:?}", rect1);
+    dbg!(&rect1);
 }
