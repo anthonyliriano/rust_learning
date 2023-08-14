@@ -16,6 +16,13 @@ impl Rectangle {
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height
     }
+
+    fn square(size : u32) -> Self {
+        Self { 
+            width: size,
+            height: size
+        }
+    }
 }
 
 fn main() {
@@ -232,4 +239,7 @@ fn struct_with_methods() {
     }
 
     println!("Can Rectangle 1, hold Rectangle 2? {}", rect1.can_hold(&rect2));
+
+    let sq = Rectangle::square(20);
+    println!("The Square has a Height of: {} and Width of: {}", sq.width, sq.height);
 }
