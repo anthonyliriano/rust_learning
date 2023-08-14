@@ -25,8 +25,33 @@ impl Rectangle {
     }
 }
 
+enum IpAddrKind {
+    V4(String),
+    V6(String)
+}
+
+struct IpAddr {
+    kind : IpAddrKind,
+    address : String
+}
+
+#[derive(Debug)]
+enum Message { 
+    Quit,
+    Move {x : i32, y : i32},
+    Write(String),
+    ChangeColor(i32, i32, i32),
+    // NetworkOutput(IpAddr)
+}
+
+impl Message {
+    fn call(&self) {
+        // Method Body.
+    }
+}
+
 fn main() {
-    struct_with_methods();
+    enum_option_type();
     // first_word_return_string_slice(&String::from("this is a test"));
 }
 
@@ -242,4 +267,22 @@ fn struct_with_methods() {
 
     let sq = Rectangle::square(20);
     println!("The Square has a Height of: {} and Width of: {}", sq.width, sq.height);
+}
+
+fn enums_examples() {
+    let home = IpAddrKind::V4(String::from("127.0.0.1"));
+    let loopback = IpAddrKind::V6(String::from("::1"));
+
+    let me = Message::Write(String::from("hello"));
+    println!("This is the output: {:?}", me);
+}
+
+fn enum_option_type() {
+    let some_number = Some(5);
+    let some_char = Some('c');
+    let absent_number: Option<i32> = None;
+
+    // Code does not work because we have to handle Option<i32> before using that value.
+    // let sum = some_number + absent_number;
+    // println!("The sume is: {}", sum);
 }
