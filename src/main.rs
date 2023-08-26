@@ -50,6 +50,13 @@ impl Message {
     }
 }
 
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter
+}
+
 fn main() {
     enum_option_type();
     // first_word_return_string_slice(&String::from("this is a test"));
@@ -285,4 +292,16 @@ fn enum_option_type() {
     // Code does not work because we have to handle Option<i32> before using that value.
     // let sum = some_number + absent_number;
     // println!("The sume is: {}", sum);
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    match coin {
+        Coin::Penny => {
+            println!("Lucky Penny");
+            1
+        },
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter => 25
+    }
 }
