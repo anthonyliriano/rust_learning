@@ -50,15 +50,22 @@ impl Message {
     }
 }
 
+#[derive(Debug)]
+enum UsState{
+    Alabama,
+    Alaska
+}
+
 enum Coin {
     Penny,
     Nickel,
     Dime,
-    Quarter
+    Quarter(UsState)
 }
 
 fn main() {
-    enum_option_type();
+    plus_one(None);
+    // enum_option_type();
     // first_word_return_string_slice(&String::from("this is a test"));
 }
 
@@ -294,6 +301,7 @@ fn enum_option_type() {
     // println!("The sume is: {}", sum);
 }
 
+//value_in_cents(Coin::Quarter(UsState::Alaska));
 fn value_in_cents(coin: Coin) -> u8 {
     match coin {
         Coin::Penny => {
@@ -302,6 +310,22 @@ fn value_in_cents(coin: Coin) -> u8 {
         },
         Coin::Nickel => 5,
         Coin::Dime => 10,
-        Coin::Quarter => 25
+        Coin::Quarter(state) => {
+            println!("State quarter from: {:?}", state);
+            25
+        }
+    }
+}
+
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => {
+            print!("Matched Sum Equal To: {}", "None");
+            None
+        },
+        Some(i) => {
+            print!("Matched Sum Equal To: {}", i + 1);
+            Some(i + 1)
+        }
     }
 }
